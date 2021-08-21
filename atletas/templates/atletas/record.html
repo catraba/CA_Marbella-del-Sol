@@ -1,0 +1,116 @@
+{% extends "atletas/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+{% if MMPs %}
+<div class="container is-max-desktop">
+
+  <input type="hidden" id="myVar" value="{{ ficha_temporada }}">
+  <input type="hidden" id="temporada" value="{{ temporada }}">
+
+    <section class="section">
+        <h1 class="subtitle is-1 has-text-grey-dark has-text-centered">
+          {{ atleta.nombre }} {{ atleta.apellido1 }} {{ atleta.apellido2 }}
+        </h1>
+    </section>
+
+    <div class="columns">
+      <div class="column is-one-fifth mt-2 has-text-centered">
+        <span class="tag is-warning is-large">MMP</span>
+      </div>
+
+      <div class="column">
+        <nav class="level is-mobile">
+
+          {% for key, value in MMPs.items %}
+          <div class="level-item has-text-centered">
+            <div>
+              <p class="heading">{{ key }}</p>
+              <p class="title">{{ value }}</p>
+            </div>
+              
+          </div>
+          {% endfor %}
+
+        </nav> 
+      </div>
+         
+    </div>
+
+    
+    <article class="message is-success mx-1">
+      <div class="message-body">
+        {% if top_speed %}
+        <p>Velocidad máxima media: <strong>{{ top_speed}}</strong>km/h</p>
+        {% endif %}
+        {% if dis_total %}
+        <p>Distancia total recorrida: <strong>{{ dis_total }}</strong>km</p>
+        {% endif %}
+      </div>
+    </article>
+
+    <p class="subtitle is-4 mb-4 mx-1">Comparación respecto al RE:</p>
+
+    <div class="columns mx-1">
+
+      {% for key, value in comparaciones.items %}
+      <div class="column is-one-third">
+        <p class="has-text-centered"><strong>{{ key }}</strong> ({{ value.Distancia }}m)
+          <progress class="progress is-info" value="{{value.Porcentaje}}" max="100">{{value.Porcentaje}}%</progress>
+          
+        </p>
+      </div>
+      
+      {% endfor %}
+
+    </div>
+
+    <div class="buttons has-addons is-right mt-2 mx-1">
+      <div class="select is-danger is-small">
+        <select onchange="getPrueba()" id="prueba">
+            <option>Seleccionar</option>
+            {% for key, value in ficha_temporada.items %}
+              {% if value.Fechas %}
+                <option>{{ key }}</option>
+              {% endif %}
+            {% endfor %}
+        </select>
+      </div>
+    </div>
+      
+    <div class="colum mx-1">
+      <canvas id="myChart" width="400" height="400"></canvas>
+    </div>
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.4.1/dist/chart.min.js"></script>
+<script src="{% static 'js/Chart.js' %}"></script>
+
+{% else %}
+
+<div class="container is-max-desktop">
+
+
+  <section class="section">
+    <article class="message is-warning">
+      <div class="message-body has-text-centered">
+        <strong>{{ atleta.nombre }}</strong> aún no ha registrado ninguna marca oficial.
+      </div>
+    </article>
+  </section>
+
+
+</div>
+
+{% endif %}
+
+{% endblock %}
+
+
+
+
+

@@ -1,0 +1,137 @@
+{% extends "atletas/base.html" %}
+
+{% block content %}
+
+{% load static %}
+
+<div class="container is-widescreen">
+
+
+    <section class="section">
+        <div class="hero-body">
+        <div class="columns">
+            <div class="column is-two-fifths">
+                <p class="subtitle is-1">CA Marbella del Sol</p>
+                <div><p></p></div> 
+                <p class="subtitle has-text-justified mr-4">Esto es un mensaje descriptivo para contar la vida del club o lo que surja. Estoy rellenando esto para ver cómo queda pero se puede cambiar en cualquier momento. La verdad es que esta línea se ajusta bastante bien.</p>   
+                <p class="subtitle has-text-justified mr-4">Lo ideal sería un mensaje motivador, o contar la historia del club y/o animar a la peña a que se apunte.</p>
+                <p class="subtitle has-text-justified mr-4">Y aquí puedes mandamos un saludo en plan guay.</p>
+                <div class="buttons is-right mt-2 mr-2">
+                    <a href="{% url 'atletas' %}"><button class="button is-primary is-light">Nuestros atletas</button></a>
+                    <a href="{% url 'logros' %}"><button class="button is-light">Logros</button></a>
+                  </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        <img src="{% static '/images/grupo.jpg' %}">
+                      </figure>
+                    </div>
+                  </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+</div>
+
+<section class="hero is-small is-link">
+  <div class="hero-body">
+    <div class="container has-text-centered">
+        <p class="subtitle is-1">Equipo técnico</p>
+    </div>
+  </div>
+
+      <div class="container is-widescreen">
+
+        <div class="columns mx-1">
+
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-96x96">
+                      <img class="is-rounded" src="{% static 'images/user.png' %}">
+                    </figure>
+                  </div>
+
+                  <div class="content">
+                    <h3>Óscar Iranzo</h3>
+                    <span class="tag is-danger is-light"><strong>ENTRENADOR</strong></span>
+                    <p><i>@iranzoprotraining</i></p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-96x96">
+                      <img class="is-rounded" src="{% static 'images/user.png' %}">
+                    </figure>
+                  </div>
+
+                  <div class="content">
+                    <h3>Alberto Mena</h3>
+                    <span class="tag is-danger is-light"><strong>TESORERO</strong></span>
+                    <p><i>@aitanamenaa</i></p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="column is-one-third">
+            <div class="card">
+              <div class="card-content">
+                <div class="media">
+
+                  <div class="media-left">
+                    <figure class="image is-96x96">
+                      <img class="is-rounded" src="{% static 'images/user.png' %}">
+                    </figure>
+                  </div>
+
+                  <div class="content">
+                    <h3>Víctor Fernandez</h3>
+                    <span class="tag is-danger is-light"><strong>MANAGER</strong></span>
+                    <p><i>@laurafd_28</i></p>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="block"></div>
+
+      </div>
+
+</section>
+
+<div class="container is-max-desktop">
+
+  <section class="section">
+    <div class="container has-text-centered">
+      <p class="subtitle is-1">Pásate a conocernos</p>
+      <p class="subtitle">Horario: 9:00 - 21:00 (entrada noreste)</p>
+    
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3206.7942442995977!2d-4.8828042864083665!3d36.51082857545444!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd72d80990f9cedf%3A0x79f56c8a62302484!2sEstadio%20Municipal%20de%20Marbella!5e0!3m2!1ses!2ses!4v1626685052742!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+  </section>
+
+</div>
+
+{% endblock %}

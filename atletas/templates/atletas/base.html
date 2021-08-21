@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CA Marbella del Sol</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    {% load static %}
+    <link rel="icon" href="{% static 'images/logo.png' %}">
+  </head>
+<body>
+
+  
+  <div class="container is-widescreen">
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="{% url 'club' %}">
+        <img src="{% static 'images/logo.png' %}" width="24" height="24">
+      </a>
+
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbar-menu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="{% url 'club' %}">Club</a>
+        <a class="navbar-item" href="{% url 'atletas' %}">Atletas</a>
+        <a class="navbar-item" href="{% url 'logros' %}">Logros</a>
+      </div>
+
+      <div class="navbar-end">
+        {% if user.is_authenticated %}
+
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">Hola, {{ user }}</a>
+  
+          <div class="navbar-dropdown">
+            <div class="dropdown-item">
+              <p><strong>Mi perfil</strong></p>
+            </div>
+            <hr class="dropdown-divider">
+            <a class="navbar-item" href="/password/">Contraseña</a>
+            <a class="navbar-item" href="/ficha/">Ficha</a>
+            {% if atleta.slug %}
+            <a class="navbar-item" href="/marcas/">Marcas</a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="navbar-item">
+          <div class="buttons">
+            <a class="button is-link" href="{% url 'logout' %}"><strong>Cerrar sesión</strong></a>
+          </div>
+        </div>
+      </div>
+
+      {% else %}
+
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-link" href="{% url 'login' %}"><strong>Iniciar sesión</strong></a>
+        </div>
+      </div>
+      
+      {% endif %}
+
+    </div>
+  </nav>
+
+  </div>
+
+  <!-- CONTENIDO -->
+
+  {% block content %}
+
+
+  {% endblock %}
+
+  <footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>CA Marbella del Sol</strong> por <a href="https://github.com/catraba">Adrián Carabantes</a>. Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+</body>
+</html>
+
+<script src="{% static 'js/navbar-mobile.js' %}"></script>

@@ -1,0 +1,64 @@
+{% extends "atletas/base.html" %}
+
+{% block content %}
+
+
+<div class="container is-max-desktop">
+
+    <section class="section">
+
+      <div class="columns is-desktop is-centered">
+        <div class="column is-half">
+
+          {% if atleta %}
+
+          <h1 class="subtitle is-1">Datos personales</h1>
+
+          <p><strong>Nombre: </strong> {{ atleta.nombre }}</p>
+          <p><strong>Primer apellido: </strong> {{ atleta.apellido1 }}</p>
+          <p><strong>Segundo apellido: </strong> {{ atleta.apellido2 }}</p>
+          <p><strong>Fecha de nacimiento: </strong> {{ atleta.edad }}</p>
+          <p><strong>Sexo: </strong> {{ atleta.sexo }}</p>
+
+          <div class="block"></div>
+
+          <h1 class="subtitle is-1">Datos deportivos</h1>
+          <p><strong>Disciplina: </strong> {{ atleta.disciplina }}</p>
+          <p><strong>Categoría: </strong> {{ atleta.categoria }}</p>
+          <p><strong>Federado: </strong> {{ atleta.federado }}</p>
+
+          <div class="block"></div>
+
+          <h1 class="subtitle is-1">Otros</h1>
+          <p><strong>Instagram: </strong> {{ atleta.instagram }}</p>
+
+          {% else %}
+
+          <form method="POST">
+            {% csrf_token %}
+
+            {% for field in form %}
+
+            <div class="field">
+              <label class="label">{{ field.label }}</label>
+              <div class="control">
+                {{ field }}
+              </div>
+            </div>
+
+            {% endfor %}
+
+            <button class="button is-success is-rounded" type="submit">Guardar</button>
+          </form>
+
+      {% endif %}
+
+        </div>
+      </div>
+
+    </section>
+
+</div>
+
+
+{% endblock %}

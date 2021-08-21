@@ -1,0 +1,1 @@
+web: gunicorn CA_Marbella_del_Sol.wsgi --log-file -

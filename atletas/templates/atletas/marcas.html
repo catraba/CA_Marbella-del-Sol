@@ -1,0 +1,70 @@
+{% extends "atletas/base.html" %}
+
+{% block content %}
+
+<section class="section">
+
+    <div class="columns is-desktop is-centered">
+
+      <form class="box" method="POST">
+        {% csrf_token %}
+
+        <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Nueva marca</label>
+            </div>
+
+            <div class="field-body">
+            {% for field in form %}
+            
+              <div class="field">
+                <p class="control is-expanded">
+                  {{ field }}
+                </p>
+              </div>
+            {% endfor %}
+            
+              
+              <div class="field">
+                <p class="control is-expanded">
+                    <button class="button is-success is-rounded" type="submit">Registrar</button>
+                </p>
+              </div>
+              
+             </div> 
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="block"></div>
+
+    <div class="columns is-desktop is-centered">
+
+        <table class="table is-striped">
+            <thead>
+                <tr>
+                    <th>Fecha</th>
+                    <th>Lugar</th>
+                    <th>Prueba</th>
+                    <th>Tiempo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for marca in marcas %}
+                <tr>
+                    <td>{{ marca.fecha }}</td>
+                    <td>{{ marca.lugar }}</td>
+                    <td>{{ marca.prueba }}</td>
+                    <td>{{ marca.tiempo }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+</section>
+
+{% endblock %}
